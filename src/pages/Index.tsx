@@ -28,6 +28,7 @@ import VehicleCard from "@/components/VehicleCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Helmet } from "react-helmet-async";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 const Index = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -85,21 +86,16 @@ const Index = () => {
   const vehicles = [
    
    
-    {
-      name: "Wagon R",
-      capacity: "4 Passengers",
-      features: ["AC", "GPS", "Fuel Efficient"],
-      image: "/images/vehical/wagon r.jpg"
-    },
+    
     {
       name: "Toyota Corolla",
-      capacity: "4 Passengers",
+      capacity: "2 Passengers",
       features: ["Very popular sedan", "Reliable, fuel-efficient", "Common for city travel and airport transfers"],
       image: "/images/vehical/toyota corolla.jpg"
     },
     {
     name: "Suzuki Swift",
-    capacity: "4 Passengers",
+    capacity: "2 Passengers",
     features: [
       "Compact hatchback",
       "Easy to maneuver in city traffic",
@@ -109,7 +105,7 @@ const Index = () => {
   },
     {
     name: "Toyota Prius",
-    capacity: "4 Passengers",
+    capacity: "2 Passengers",
     features: [
       "Hybrid sedan",
       "Eco-friendly with great mileage",
@@ -118,8 +114,14 @@ const Index = () => {
     image: "/images/vehical/toyota Prius.jpg"
   },
   {
+      name: "Wagon R",
+      capacity: "2 Passengers",
+      features: ["AC", "GPS", "Fuel Efficient"],
+      image: "/images/vehical/wagon r.jpg"
+    },
+  {
     name: "Toyota Land Cruiser",
-    capacity: "7 Passengers",
+    capacity: "5 Passengers",
     features: [
       "Robust SUV",
       "Suitable for rough terrain and long tours",
@@ -129,7 +131,7 @@ const Index = () => {
   },
   {
     name: "Nissan X-Trail",
-    capacity: "7 Passengers",
+    capacity: "5 Passengers",
     features: [
       "Comfortable SUV",
       "Good for family and group travels",
@@ -139,7 +141,7 @@ const Index = () => {
   },
     {
     name: "Mitsubishi Outlander",
-    capacity: "7 Passengers",
+    capacity: "5 Passengers",
     features: [
       "Mid-size SUV",
       "Fuel-efficient with modern features",
@@ -147,19 +149,10 @@ const Index = () => {
     ],
     image: "/images/vehical/Mitsubishi Outlander.jpg"
   },
-  {
-    name: "Suzuki Jimny",
-    capacity: "4 Passengers",
-    features: [
-      "Compact SUV",
-      "Great for narrow roads and off-road",
-      "Easy to park and maneuver"
-    ],
-    image: "/images/vehical/Suzuki Jimny.jpg"
-  },
+  
     {
     name: "Honda Civic",
-    capacity: "4 Passengers",
+    capacity: "2 Passengers",
     features: [
       "Popular sedan",
       "Smooth ride and fuel-efficient",
@@ -169,7 +162,7 @@ const Index = () => {
   },
   {
     name: "Mahindra Scorpio",
-    capacity: "7 Passengers",
+    capacity: "5 Passengers",
     features: [
       "Tough SUV",
       "Well-suited for rough terrains",
@@ -179,13 +172,13 @@ const Index = () => {
   },
    {
       name: "Suzuki Every Van",
-      capacity: "7 Passengers",
+      capacity: "5 Passengers",
       features: ["AC", "Music System"],
       image: "/images/vehical/every.jpg"
     },
    {
     name: "Nissan Caravan",
-    capacity: "12 Passengers",
+    capacity: "10 Passengers",
     features: [
       "Spacious van",
       "Perfect for group transport",
@@ -196,7 +189,7 @@ const Index = () => {
   
   {
     name: "Hyundai H-1",
-    capacity: "10 Passengers",
+    capacity: "8 Passengers",
     features: [
       "Mini van",
       "Ideal for family or corporate travel",
@@ -206,7 +199,7 @@ const Index = () => {
   },
   {
     name: "Toyota Noah",
-    capacity: "7 Passengers",
+    capacity: "5 Passengers",
     features: [
       "Mini van",
       "Good for city and suburban travel",
@@ -226,7 +219,7 @@ const Index = () => {
   },
   {
     name: "Tata Winger",
-    capacity: "14 Passengers",
+    capacity: "12 Passengers",
     features: [
       "Mini bus",
       "Ideal for small group tours",
@@ -270,7 +263,32 @@ const Index = () => {
       country: "Spain",
       rating: 5,
       comment: "Excellent vehicle rental service. The van was clean and comfortable for our family trip."
-    }
+    },
+    {
+    name: "John Smith",
+    country: "USA",
+    rating: 5,
+    comment: "The van we rented was perfect for our family trip. Spacious, clean, and the service was excellent!"
+  },
+  {
+    name: "Emily Davis",
+    country: "UK",
+    rating: 4,
+    comment: "Great experience with the vehicle rental company. The driver was punctual and the vehicle comfortable."
+  },
+  {
+    name: "Hans Müller",
+    country: "Germany",
+    rating: 5,
+    comment: "Exploring Sri Lanka was easy with the SUV we rented. Reliable vehicle and friendly staff."
+  },
+  {
+    name: "Aisha Khan",
+    country: "UAE",
+    rating: 5,
+    comment: "Smooth booking process and excellent customer support. The mini-van was ideal for our group."
+  }
+  
   ];
 
   return (
@@ -497,19 +515,22 @@ const Index = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-12 sm:py-20 px-4">
-          <div className="container mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
-              <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{t('testimonials')}</h3>
-            </div>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {testimonials.map((testimonial, index) => (
-                <TestimonialCard key={index} testimonial={testimonial} />
-              ))}
-            </div>
-          </div>
-        </section>
+<section className="py-12 sm:py-20 px-4">
+  <div className="container mx-auto">
+    <div className="text-center mb-12 sm:mb-16">
+      <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{t('testimonials')}</h3>
+    </div>
+
+    <div className="overflow-x-auto scrollbar-hide -mx-4 px-4">
+      <div className="flex space-x-6 sm:space-x-8">
+        {testimonials.map((testimonial, index) => (
+          <TestimonialCard key={index} testimonial={testimonial} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Footer */}
         <footer className="bg-gradient-to-r from-emerald-800 to-amber-800 text-white py-12 sm:py-16">
