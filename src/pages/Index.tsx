@@ -83,25 +83,173 @@ const Index = () => {
   ];
 
   const vehicles = [
-    {
-      name: "Toyota Hiace",
-      capacity: "15 Passengers",
-      features: ["AC", "Comfortable Seating", "Luggage Space"],
-      image: "/images/vehical/kdh.jpg"
-    },
-    {
-      name: "Suzuki Every Van",
-      capacity: "7 Passengers",
-      features: ["AC", "Music System"],
-      image: "/images/vehical/every.jpg"
-    },
+   
+   
     {
       name: "Wagon R",
       capacity: "4 Passengers",
       features: ["AC", "GPS", "Fuel Efficient"],
       image: "/images/vehical/wagon r.jpg"
-    }
-    
+    },
+    {
+      name: "Toyota Corolla",
+      capacity: "4 Passengers",
+      features: ["Very popular sedan", "Reliable, fuel-efficient", "Common for city travel and airport transfers"],
+      image: "/images/vehical/toyota corolla.jpg"
+    },
+    {
+    name: "Suzuki Swift",
+    capacity: "4 Passengers",
+    features: [
+      "Compact hatchback",
+      "Easy to maneuver in city traffic",
+      "Affordable and efficient"
+    ],
+    image: "/images/vehical/Suzuki Swift.jpg"
+  },
+    {
+    name: "Toyota Prius",
+    capacity: "4 Passengers",
+    features: [
+      "Hybrid sedan",
+      "Eco-friendly with great mileage",
+      "Ideal for urban and long-distance trips"
+    ],
+    image: "/images/vehical/toyota Prius.jpg"
+  },
+  {
+    name: "Toyota Land Cruiser",
+    capacity: "7 Passengers",
+    features: [
+      "Robust SUV",
+      "Suitable for rough terrain and long tours",
+      "Popular for family trips and safaris"
+    ],
+    image: "/images/vehical/Toyota Land Cruiser.jpg"
+  },
+  {
+    name: "Nissan X-Trail",
+    capacity: "7 Passengers",
+    features: [
+      "Comfortable SUV",
+      "Good for family and group travels",
+      "Spacious and reliable"
+    ],
+    image: "/images/vehical/Nissan X-Trail.jpg"
+  },
+    {
+    name: "Mitsubishi Outlander",
+    capacity: "7 Passengers",
+    features: [
+      "Mid-size SUV",
+      "Fuel-efficient with modern features",
+      "Great for city and highway driving"
+    ],
+    image: "/images/vehical/Mitsubishi Outlander.jpg"
+  },
+  {
+    name: "Suzuki Jimny",
+    capacity: "4 Passengers",
+    features: [
+      "Compact SUV",
+      "Great for narrow roads and off-road",
+      "Easy to park and maneuver"
+    ],
+    image: "/images/vehical/Suzuki Jimny.jpg"
+  },
+    {
+    name: "Honda Civic",
+    capacity: "4 Passengers",
+    features: [
+      "Popular sedan",
+      "Smooth ride and fuel-efficient",
+      "Commonly used for personal and business travel"
+    ],
+    image: "/images/vehical/Honda Civic.jpg"
+  },
+  {
+    name: "Mahindra Scorpio",
+    capacity: "7 Passengers",
+    features: [
+      "Tough SUV",
+      "Well-suited for rough terrains",
+      "Spacious interior for groups"
+    ],
+    image: "/images/vehical/Mahindra Scorpio.jpg"
+  },
+   {
+      name: "Suzuki Every Van",
+      capacity: "7 Passengers",
+      features: ["AC", "Music System"],
+      image: "/images/vehical/every.jpg"
+    },
+   {
+    name: "Nissan Caravan",
+    capacity: "12 Passengers",
+    features: [
+      "Spacious van",
+      "Perfect for group transport",
+      "Comfortable seating and luggage space"
+    ],
+    image: "/images/vehical/Nissan Caravan.jpg"
+  },
+  
+  {
+    name: "Hyundai H-1",
+    capacity: "10 Passengers",
+    features: [
+      "Mini van",
+      "Ideal for family or corporate travel",
+      "Modern and comfortable"
+    ],
+    image: "/images/vehical/Hyundai H-1.jpg"
+  },
+  {
+    name: "Toyota Noah",
+    capacity: "7 Passengers",
+    features: [
+      "Mini van",
+      "Good for city and suburban travel",
+      "Spacious and easy to drive"
+    ],
+    image: "/images/vehical/Toyota Noah.jpg"
+  },
+   {
+    name: "Ashok Leyland Bus",
+    capacity: "50 Passengers",
+    features: [
+      "Large bus",
+      "Used for large group tours and intercity travel",
+      "Comfortable seating and luggage space"
+    ],
+    image: "/images/vehical/bus.jpg"
+  },
+  {
+    name: "Tata Winger",
+    capacity: "14 Passengers",
+    features: [
+      "Mini bus",
+      "Ideal for small group tours",
+      "Comfortable and reliable"
+    ],
+    image: "/images/vehical/Tata Winger.jpg"
+  },
+  {
+    name: "Toyota Hiace Flat Roof",
+    capacity: "10 Passengers",
+    features: [
+      "Flat roof van",
+      "Ideal for small groups",
+      "Commonly used for city tours and airport drops"
+    ],
+    image: "/images/vehical/Toyota Hiace Flat Roof.jpg"
+  },
+   {
+      name: "Toyota Hiace High Roof",
+      capacity: "12 Passengers",
+      features: ["AC", "Comfortable Seating", "Luggage Space"],
+      image: "/images/vehical/kdh.jpg"
+    },
   ];
 
   const testimonials = [
@@ -284,23 +432,29 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Vehicle Rental Section */}
-        <section className="py-12 sm:py-20 px-4">
-          <div className="container mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
-              <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{t('vehicleRentals')}</h3>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                {t('vehiclesDescription')}
-              </p>
-            </div>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {vehicles.map((vehicle, index) => (
-                <VehicleCard key={index} vehicle={vehicle} onContact={() => setIsContactModalOpen(true)} />
-              ))}
-            </div>
+       {/* Vehicle Rental Section */}
+<section className="py-12 sm:py-20 px-4">
+  <div className="container mx-auto">
+    <div className="text-center mb-12 sm:mb-16">
+      <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{t('vehicleRentals')}</h3>
+      <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+        {t('vehiclesDescription')}
+      </p>
+    </div>
+    
+    {/* Horizontally scrollable container */}
+    <div className="overflow-x-auto scrollbar-hide">
+      <div className="flex space-x-6 px-2 py-4">
+        {vehicles.map((vehicle, index) => (
+          <div key={index} className="min-w-[280px] flex-shrink-0">
+            <VehicleCard vehicle={vehicle} onContact={() => setIsContactModalOpen(true)} />
           </div>
-        </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Why Choose Us Section */}
         <section className="py-12 sm:py-20 px-4 bg-gradient-to-r from-amber-50 to-emerald-50">
