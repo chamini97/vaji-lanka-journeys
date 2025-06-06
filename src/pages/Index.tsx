@@ -541,40 +541,7 @@ const Index = () => {
                   <li>{t('customTours')}</li>
                 </ul>
               </div>
-              <div>
-                <h5 className="text-lg sm:text-xl font-semibold mb-4">{t('Luxury Vehicles')}</h5>
-                <ul className="space-y-2 text-emerald-100 text-sm sm:text-base">
-                  <li>{t('toyota premio')}</li>
-                  <li>{t('Toyota TRJ 120 Prado')}</li>
-                  <li>{t('Toyota Avanza 2017')}</li>
-                  <li>{t('Toyota Hilux Cab')}</li>
-                  <li>{t('Toyota TRJ 150 Prado')}</li>
-                </ul>
-              </div>
-               <div>
-                <h5 className="text-lg sm:text-xl font-semibold mb-4">{t('Mini Cars')}</h5>
-                <ul className="space-y-2 text-emerald-100 text-sm sm:text-base">
-                  <li>{t('Nissan March')}</li>
-                  <li>{t('Suzuki Japan Alto')}</li>
-                </ul>
-              </div>
-               <div>
-                <h5 className="text-lg sm:text-xl font-semibold mb-4">{t('Vans')}</h5>
-                <ul className="space-y-2 text-emerald-100 text-sm sm:text-base">
-                  <li>{t('Suzuki Every Buddy Van Auto')}</li>
-                </ul>
-              </div>
-              <div>
-                <h5 className="text-lg sm:text-xl font-semibold mb-4">{t('Standard Vehicles')}</h5>
-                <ul className="space-y-2 text-emerald-100 text-sm sm:text-base">
-                  <li>{t('Suzuki Swift')}</li>
-                  <li>{t('Toyota Vitz')}</li>
-                  <li>{t('Toyota Avanza')}</li>
-                  <li>{t('Toyota Allion')}</li>
-                  <li>{t('Toyota Premio')}</li>
-                  <li>{t('Volvo AC 45 Seater Luxury Bus')}</li>
-                </ul>
-              </div>
+              
               <div>
                 <h5 className="text-lg sm:text-xl font-semibold mb-4">{t('popularDestinations')}</h5>
                 <ul className="space-y-2 text-emerald-100 text-sm sm:text-base">
