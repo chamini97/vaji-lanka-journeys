@@ -21,7 +21,7 @@ const GalleryModal = ({ isOpen, onClose }: GalleryModalProps) => {
     "/images/gallery/car 2.jpg",
     "/images/gallery/car 3.jpg",
     "/images/gallery/car 4.jpg",
-    "/images/gallery/car 5(1).jpg",
+    "/images/gallery/car 5.jpg",
     "/images/gallery/van 1.jpg",
     "/images/gallery/van 2.jpg",
     "/images/gallery/van 3.jpg",
