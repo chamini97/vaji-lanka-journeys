@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,12 +25,16 @@ import ServiceCard from "@/components/ServiceCard";
 import TourPackageCard from "@/components/TourPackageCard";
 import VehicleCard from "@/components/VehicleCard";
 import TestimonialCard from "@/components/TestimonialCard";
+import GalleryModal from "@/components/GalleryModal";
+import ReviewModal from "@/components/ReviewModal";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Helmet } from "react-helmet-async";
 import TestimonialsSection from "@/components/TestimonialsSection";
 
 const Index = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   const services = [
@@ -302,7 +305,6 @@ const Index = () => {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://vajisrilankatours.com" />
         
-        {/* Open Graph meta tags */}
         <meta property="og:title" content="VajiSriLankaTours - Best Sri Lanka Tours & Travel Services" />
         <meta property="og:description" content="Discover Sri Lanka with professional tours, airport transfers, and vehicle rentals. Experience authentic Sri Lankan hospitality." />
         <meta property="og:type" content="website" />
@@ -310,17 +312,14 @@ const Index = () => {
         <meta property="og:image" content="/sri_lanka_991797e44f.jpg" />
         <meta property="og:site_name" content="VajiSriLankaTours" />
         
-        {/* Twitter Card meta tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="VajiSriLankaTours - Best Sri Lanka Tours & Travel Services" />
         <meta name="twitter:description" content="Discover Sri Lanka with professional tours, airport transfers, and vehicle rentals." />
         <meta name="twitter:image" content="/sri_lanka_991797e44f.jpg" />
         
-        {/* Mobile optimization */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#059669" />
         
-        {/* Structured data for SEO */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -343,7 +342,6 @@ const Index = () => {
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
-        {/* Header */}
         <header className="bg-white/80 backdrop-blur-md border-b border-emerald-100 sticky top-0 z-50">
           <div className="container mx-auto px-4 py-3 sm:py-4">
             <div className="flex justify-between items-center">
@@ -382,7 +380,6 @@ const Index = () => {
           </div>
         </header>
 
-        {/* Hero Section */}
         <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -409,12 +406,19 @@ const Index = () => {
                 <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 {t('planJourney')}
               </Button>
-              
+              <Button 
+                size="lg" 
+                onClick={() => setIsGalleryModalOpen(true)}
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
+              >
+                <Camera className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                View Gallery
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* Services Section */}
         <section className="py-12 sm:py-20 px-4">
           <div className="container mx-auto">
             <div className="text-center mb-12 sm:mb-16">
@@ -432,7 +436,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Tour Packages Section */}
         <section className="py-12 sm:py-20 px-4 bg-gradient-to-r from-emerald-50 to-amber-50">
           <div className="container mx-auto">
             <div className="text-center mb-12 sm:mb-16">
@@ -450,31 +453,27 @@ const Index = () => {
           </div>
         </section>
 
-       {/* Vehicle Rental Section */}
-<section className="py-12 sm:py-20 px-4">
-  <div className="container mx-auto">
-    <div className="text-center mb-12 sm:mb-16">
-      <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{t('vehicleRentals')}</h3>
-      <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-        {t('vehiclesDescription')}
-      </p>
-    </div>
-    
-    {/* Horizontally scrollable container */}
-    <div className="overflow-x-auto scrollbar-hide">
-      <div className="flex space-x-6 px-2 py-4">
-        {vehicles.map((vehicle, index) => (
-          <div key={index} className="min-w-[280px] flex-shrink-0">
-            <VehicleCard vehicle={vehicle} onContact={() => setIsContactModalOpen(true)} />
+        <section className="py-12 sm:py-20 px-4">
+          <div className="container mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{t('vehicleRentals')}</h3>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                {t('vehiclesDescription')}
+              </p>
+            </div>
+            
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex space-x-6 px-2 py-4">
+                {vehicles.map((vehicle, index) => (
+                  <div key={index} className="min-w-[280px] flex-shrink-0">
+                    <VehicleCard vehicle={vehicle} onContact={() => setIsContactModalOpen(true)} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
 
-
-        {/* Why Choose Us Section */}
         <section className="py-12 sm:py-20 px-4 bg-gradient-to-r from-amber-50 to-emerald-50">
           <div className="container mx-auto">
             <div className="text-center mb-12 sm:mb-16">
@@ -514,25 +513,11 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-<section className="py-12 sm:py-20 px-4">
-  <div className="container mx-auto">
-    <div className="text-center mb-12 sm:mb-16">
-      <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-4">{t('testimonials')}</h3>
-    </div>
+        <TestimonialsSection 
+          testimonials={testimonials} 
+          onOpenReviewModal={() => setIsReviewModalOpen(true)} 
+        />
 
-    <div className="overflow-x-auto scrollbar-hide -mx-4 px-4">
-      <div className="flex space-x-6 sm:space-x-8">
-        {testimonials.map((testimonial, index) => (
-          <TestimonialCard key={index} testimonial={testimonial} />
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
-
-        {/* Footer */}
         <footer className="bg-gradient-to-r from-emerald-800 to-amber-800 text-white py-12 sm:py-16">
           <div className="container mx-auto px-4">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -622,6 +607,16 @@ const Index = () => {
         <ContactModal 
           isOpen={isContactModalOpen} 
           onClose={() => setIsContactModalOpen(false)} 
+        />
+        
+        <GalleryModal 
+          isOpen={isGalleryModalOpen} 
+          onClose={() => setIsGalleryModalOpen(false)} 
+        />
+        
+        <ReviewModal 
+          isOpen={isReviewModalOpen} 
+          onClose={() => setIsReviewModalOpen(false)} 
         />
       </div>
     </>
