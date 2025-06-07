@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MessageCircle, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from '../lib/supabaseClient';
+
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -47,6 +49,20 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       });
 
       if (response.ok) {
+        // ✅ NEW: Save to Supabase
+      const { error } = await supabase.from('contacts').insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message
+        }
+      ]);
+
+      if (error) {
+        console.error("Supabase insert error:", error.message);
+      }
         toast({
           title: "Message Sent Successfully!",
           description: "Thank you for your inquiry. We'll get back to you within 24 hours.",

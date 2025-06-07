@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { supabase } from '@/lib/supabaseClient'; // Make sure this path is correct
 
 export interface UserReview {
   id: string;
@@ -13,23 +13,56 @@ export interface UserReview {
 export const useReviews = () => {
   const [userReviews, setUserReviews] = useState<UserReview[]>([]);
 
+  // Fetch reviews from Supabase when component mounts
   useEffect(() => {
-    const savedReviews = localStorage.getItem('userReviews');
-    if (savedReviews) {
-      setUserReviews(JSON.parse(savedReviews));
-    }
-  }, []);
+    const fetchReviews = async () => {
+      const { data, error } = await supabase
+        .from('reviews')
+        .select('*')
+        .order('created_at', { ascending: false });
 
-  const addReview = (review: Omit<UserReview, 'id' | 'date'>) => {
-    const newReview: UserReview = {
-      ...review,
-      id: Date.now().toString(),
-      date: new Date().toISOString(),
+      if (error) {
+        console.error('Error fetching reviews:', error.message);
+        return;
+      }
+
+      const formatted = data.map((review: any) => ({
+        id: review.id,
+        name: review.name,
+        country: review.country,
+        rating: review.rating,
+        comment: review.comment,
+        date: review.created_at,
+      }));
+
+      setUserReviews(formatted);
     };
 
-    const updatedReviews = [newReview, ...userReviews];
-    setUserReviews(updatedReviews);
-    localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
+    fetchReviews();
+  }, []);
+
+  // Add review to Supabase
+  const addReview = async (review: Omit<UserReview, 'id' | 'date'>) => {
+    const { data, error } = await supabase
+      .from('reviews')
+      .insert([review])
+      .select()
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    const newReview: UserReview = {
+      id: data.id,
+      name: data.name,
+      country: data.country,
+      rating: data.rating,
+      comment: data.comment,
+      date: data.created_at,
+    };
+
+    setUserReviews((prev) => [newReview, ...prev]);
   };
 
   return {

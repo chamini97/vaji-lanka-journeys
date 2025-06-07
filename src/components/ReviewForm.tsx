@@ -22,7 +22,7 @@ const ReviewForm = ({ onClose }: ReviewFormProps) => {
   const { addReview } = useReviews();
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!name || !country || !comment || rating === 0) {
@@ -34,19 +34,27 @@ const ReviewForm = ({ onClose }: ReviewFormProps) => {
       return;
     }
 
-    addReview({
-      name,
-      country,
-      rating,
-      comment,
-    });
+    try {
+      await addReview({
+        name,
+        country,
+        rating,
+        comment,
+      });
 
-    toast({
-      title: "Thank you!",
-      description: "Your review has been submitted successfully.",
-    });
+      toast({
+        title: "Thank you!",
+        description: "Your review has been submitted successfully.",
+      });
 
-    onClose();
+      onClose();
+    } catch (error: any) {
+      toast({
+        title: "Submission failed",
+        description: error.message || "An error occurred. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
