@@ -345,16 +345,17 @@ const Index = () => {
         <header className="bg-white/80 backdrop-blur-md border-b border-emerald-100 sticky top-0 z-50">
           <div className="container mx-auto px-4 py-3 sm:py-4">
             <div className="flex justify-between items-center">
-              <div className="flex items-center space-x-2">
-                <img 
-                  src="/lovable-uploads/15625011-f0dc-40cb-ab60-fdd07896d026.png" 
-                  alt="VajiSriLankaTours Logo" 
-                  className="h-8 sm:h-12 w-auto"
-                />
-                <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent">
-                  VajiSriLankaTours
-                </h1>
-              </div>
+              <div className="flex flex-col items-start space-y-1">
+  <img
+    src="/lovable-uploads/15625011-f0dc-40cb-ab60-fdd07896d026.png"
+    alt="VajiSriLankaTours Logo"
+    className="h-8 sm:h-12 w-auto"
+  />
+  <h1 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold whitespace-nowrap bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent">
+    VajiSriLankaTours
+  </h1>
+</div>
+
               <div className="flex items-center space-x-2 sm:space-x-4">
                 <Select value={language} onValueChange={(value: string) => setLanguage(value as 'en' | 'ar')}>
                   <SelectTrigger className="w-20 sm:w-32">
@@ -375,6 +376,7 @@ const Index = () => {
                   <span className="hidden sm:inline">{t('contactUs')}</span>
                   <span className="sm:hidden">Contact</span>
                 </Button>
+                
               </div>
             </div>
           </div>

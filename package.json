@@ -86,5 +86,13 @@
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chamini97/vaji-lanka-journeys.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chamini97/vaji-lanka-journeys/issues"
+  },
+  "homepage": "https://github.com/chamini97/vaji-lanka-journeys#readme"
 }
